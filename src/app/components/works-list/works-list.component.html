@@ -1,0 +1,83 @@
+<div class="works-list-container">
+  <header class="header">
+    <h1>Creative Works Manager</h1>
+    <a mat-raised-button color="primary" routerLink="/add" class="add-button">
+      <mat-icon>add</mat-icon>
+      New Work
+    </a>
+  </header>
+
+  <div class="filters">
+    <mat-form-field appearance="outline" class="search-field">
+      <mat-label>Search works...</mat-label>
+      <input matInput [(ngModel)]="searchTerm" (ngModelChange)="onSearchChange()" />
+      <mat-icon matPrefix>search</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="filter-field">
+      <mat-label>Type</mat-label>
+      <mat-select [(ngModel)]="selectedType" (ngModelChange)="onTypeChange()">
+        <mat-option value="all">All Types</mat-option>
+        <mat-option value="play">Play</mat-option>
+        <mat-option value="poem">Poem</mat-option>
+        <mat-option value="prose">Prose</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="filter-field">
+      <mat-label>Tag</mat-label>
+      <mat-select [(ngModel)]="selectedTag" (ngModelChange)="onTagChange()">
+        <mat-option value="all">All Tags</mat-option>
+        <mat-option *ngFor="let tag of allTags" [value]="tag">{{ tag }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-icon-button (click)="toggleViewMode()" class="view-toggle">
+      <mat-icon>{{ viewMode === 'grid' ? 'view_list' : 'view_module' }}</mat-icon>
+    </button>
+  </div>
+
+  <div class="works-count">
+    {{ filteredWorks.length }} work{{ filteredWorks.length !== 1 ? 's' : '' }}
+  </div>
+
+  <div [class]="'works-' + viewMode">
+    <mat-card *ngFor="let work of filteredWorks" class="work-card" [routerLink]="['/work', work.id]">
+      <mat-card-header>
+        <mat-icon mat-card-avatar [class]="'work-icon ' + work.type">
+          {{ work.type === 'play' ? 'theater_comedy' : work.type === 'poem' ? 'format_quote' : 'article' }}
+        </mat-icon>
+        <mat-card-title>{{ work.title }}</mat-card-title>
+        <mat-card-subtitle>{{ work.type | titlecase }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p class="excerpt">{{ work.excerpt }}</p>
+        <div class="tags">
+          <mat-chip *ngFor="let tag of work.tags">{{ tag }}</mat-chip>
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <span class="status-badge" [class]="work.status">{{ work.status }}</span>
+        <span class="spacer"></span>
+        <button mat-icon-button [routerLink]="['/edit', work.id]" (click)="$event.stopPropagation()">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteWork(work.id, $event)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <div *ngIf="filteredWorks.length === 0" class="empty-state">
+    <mat-icon>inbox</mat-icon>
+    <h2>No works found</h2>
+    <p>Try adjusting your filters or create a new work</p>
+    <a mat-raised-button color="primary" routerLink="/add">
+      <mat-icon>add</mat-icon>
+      Create Work
+    </a>
+  </div>
+</div>
