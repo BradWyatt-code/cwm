@@ -10,7 +10,7 @@
   <div class="filters">
     <mat-form-field appearance="outline" class="search-field">
       <mat-label>Search works...</mat-label>
-      <input matInput [(ngModel)]="searchTerm" (ngModelChange)="onSearchChange()" />
+      <input matInput [(ngModel)]="searchTerm" (ngModelChange)="applyFilters()" />
       <mat-icon matPrefix>search</mat-icon>
     </mat-form-field>
 
