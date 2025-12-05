@@ -28,7 +28,7 @@
       <mat-label>Tag</mat-label>
       <mat-select [(ngModel)]="selectedTag" (ngModelChange)="applyFilters()">
         <mat-option value="all">All Tags</mat-option>
-        <mat-option *ngFor="let tag of allTags" [value]="tag">{{ tag }}</mat-option>
+        <mat-option *ngFor="let tag of availableTags" [value]="tag">{{ tag }}</mat-option>
       </mat-select>
     </mat-form-field>
 
