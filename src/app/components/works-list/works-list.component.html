@@ -16,7 +16,7 @@
 
     <mat-form-field appearance="outline" class="filter-field">
       <mat-label>Type</mat-label>
-      <mat-select [(ngModel)]="selectedType" (ngModelChange)="onTypeChange()">
+      <mat-select [(ngModel)]="selectedType" (ngModelChange)="applyFilters()">
         <mat-option value="all">All Types</mat-option>
         <mat-option value="play">Play</mat-option>
         <mat-option value="poem">Poem</mat-option>
