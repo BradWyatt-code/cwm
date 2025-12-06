@@ -41,13 +41,19 @@ export class WorksListComponent implements OnInit {
 
   constructor(private worksService: WorksService) {}
 
-  ngOnInit() {
-    this.worksService.works$.subscribe((works: Work[]) => {
-      this.works = works;
-      this.filteredWorks = works;
-      this.availableTags = this.worksService.getAllTags();
-    });
-  }
+ngOnInit() {
+  // Get initial state immediately
+  this.works = this.worksService.getWorks();
+  this.filteredWorks = this.works;
+  this.availableTags = this.worksService.getAllTags();
+  
+  // Then subscribe for future updates
+  this.worksService.works$.subscribe((works: Work[]) => {
+    this.works = works;
+    this.filteredWorks = works;
+    this.availableTags = this.worksService.getAllTags();
+  });
+}
 
   applyFilters() {
     this.filteredWorks = this.works.filter(work => {
