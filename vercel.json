@@ -1,6 +1,6 @@
 {
-  "buildCommand": "npm run build && ls -la dist && ls -la dist/cwm",
-  "outputDirectory": "dist/cwm",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist/cwm/browser",
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
