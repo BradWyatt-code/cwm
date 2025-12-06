@@ -6,7 +6,7 @@ const serverRoutes: ServerRoute[] = [
     renderMode: RenderMode.Client
   },
   {
-    path: 'edit/:id', 
+    path: 'edit/:id',
     renderMode: RenderMode.Client
   },
   {
