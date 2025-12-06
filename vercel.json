@@ -1,7 +1,6 @@
 {
-  "framework": null,
   "buildCommand": "npm run build",
-  "outputDirectory": "dist/cwm/browser",
+  "outputDirectory": "dist/cwm",
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
