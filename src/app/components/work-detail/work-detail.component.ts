@@ -20,7 +20,7 @@ import { Work } from '../../models/work.model';
     MatChipsModule
   ],
   templateUrl: './work-detail.component.html',
-  styleUrl: ['./work-detail.component.css']
+  styleUrls: ['./work-detail.component.css']
 })
 export class WorkDetailComponent implements OnInit {
   work: Work | undefined;
