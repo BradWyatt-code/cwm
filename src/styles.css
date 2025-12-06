@@ -1,6 +1,38 @@
-/* You can add global styles to this file, and also import other style files */
-
+/* global styles */
 @import "tailwindcss";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  /* IMPORTANT: no background here */
+}
+
+
+.work-card.mat-mdc-card {
+  background-color: rgba(255, 255, 255, 0.92) !important;
+}
+
+
+/* Custom style for the "+ New Work" button */
+.new-work-btn {
+  /* Override MDC color variables for both filled / raised styles */
+  --mdc-filled-button-container-color: rgba(255, 255, 255, 0.9);
+  --mdc-filled-button-label-text-color: #1f2933;
+
+  --mdc-protected-button-container-color: rgba(255, 255, 255, 0.9);
+  --mdc-protected-button-label-text-color: #1f2933;
+
+  border-radius: 999px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+/* Optional hover tweak */
+.new-work-btn:hover {
+  background-color: rgba(255, 255, 255, 1) !important;
+  transform: translateY(-1px);
+}
