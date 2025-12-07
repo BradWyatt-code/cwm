@@ -26,13 +26,12 @@ import { Work } from '../../models/work.model';
 export class WorkDetailComponent implements OnInit {
   work: Work | undefined;
 
-constructor(
-  private route: ActivatedRoute,
-  private router: Router,
-  private worksService: WorksService,
-  private location: Location
-) {}
-
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private worksService: WorksService,
+    private location: Location
+  ) {}
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
