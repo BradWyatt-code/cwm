@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
@@ -29,6 +30,7 @@ export class WorkDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private worksService: WorksService
+    private location: Location
   ) {}
 
   ngOnInit() {
@@ -48,7 +50,7 @@ export class WorkDetailComponent implements OnInit {
     }
   }
 
-  goBack() {
-    this.router.navigate(['/']);
+  goBack(): void {
+    this.location.back();
   }
 }
