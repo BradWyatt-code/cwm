@@ -1,21 +1,39 @@
 <div class="work-detail-container" *ngIf="work">
-  <div class="header">
-    <button mat-icon-button (click)="goBack()" class="back-button">
-      <mat-icon>arrow_back</mat-icon>
-    </button>
-    <div class="actions">
-      <a mat-raised-button color="primary" [routerLink]="['/edit', work.id]">
-        <mat-icon>edit</mat-icon>
-        Edit
-      </a>
-      <button mat-raised-button color="warn" (click)="deleteWork()">
-        <mat-icon>delete</mat-icon>
-        Delete
-      </button>
-    </div>
-  </div>
-
   <mat-card class="work-card">
+
+    <!-- NEW header row inside the card -->
+    <div class="card-header-row">
+      <button mat-icon-button (click)="goBack()" class="back-button">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+
+      <div class="spacer"></div>
+
+      <div class="actions">
+        <a mat-raised-button color="primary" [routerLink]="['/edit', work.id]">
+          <mat-icon>edit</mat-icon>
+          Edit
+        </a>
+        <button mat-raised-button color="warn" (click)="deleteWork()">
+          <mat-icon>delete</mat-icon>
+          Delete
+        </button>
+      </div>
+    </div>
+    <!-- /NEW header row -->
+
+    <mat-card-header>
+      <mat-icon mat-card-avatar [class]="'work-icon ' + work.type">
+        {{ work.type === 'play' ? 'theater_comedy' : work.type === 'poem' ? 'format_quote' : 'article' }}
+      </mat-icon>
+      <mat-card-title>{{ work.title }}</mat-card-title>
+      <mat-card-subtitle>
+        <span class="type-badge">{{ work.type | titlecase }}</span>
+        <span class="status-badge" [class]="work.status">{{ work.status }}</span>
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    
     <mat-card-header>
       <mat-icon mat-card-avatar [class]="'work-icon ' + work.type">
         {{ work.type === 'play' ? 'theater_comedy' : work.type === 'poem' ? 'format_quote' : 'article' }}
