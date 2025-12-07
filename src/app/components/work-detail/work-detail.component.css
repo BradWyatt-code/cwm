@@ -1,36 +1,40 @@
+/* ===== Layout wrapper ===== */
 .work-detail-container {
   max-width: 900px;
   margin: 0 auto;
   padding: 2rem;
 }
 
-.header {
+/* ===== Top row inside the card: Back + Edit/Delete ===== */
+.card-header-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .back-button {
   margin-right: 1rem;
 }
 
-.actions {
+.card-header-row .actions {
   display: flex;
   gap: 1rem;
 }
 
-.actions button,
-.actions a {
+.card-header-row .actions button,
+.card-header-row .actions a {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
+/* ===== Card styling ===== */
 .work-card {
   margin-bottom: 2rem;
 }
 
+/* ===== Avatar icon on the left of the title ===== */
 .work-icon {
   width: 48px;
   height: 48px;
@@ -56,6 +60,7 @@
   color: #388e3c;
 }
 
+/* ===== Title subtitle row ===== */
 mat-card-subtitle {
   display: flex;
   gap: 1rem;
@@ -94,6 +99,7 @@ mat-card-subtitle {
   color: #616161;
 }
 
+/* ===== Content area ===== */
 mat-card-content {
   padding: 2rem 1.5rem;
 }
@@ -169,6 +175,7 @@ mat-card-content {
   margin: 0;
 }
 
+/* ===== Error state ===== */
 .error-state {
   text-align: center;
   padding: 4rem 2rem;
@@ -193,23 +200,24 @@ mat-card-content {
   margin-bottom: 2rem;
 }
 
+/* ===== Mobile tweaks ===== */
 @media (max-width: 768px) {
   .work-detail-container {
     padding: 1rem;
   }
 
-  .header {
+  .card-header-row {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
   }
 
-  .actions {
+  .card-header-row .actions {
     width: 100%;
   }
 
-  .actions button,
-  .actions a {
+  .card-header-row .actions button,
+  .card-header-row .actions a {
     flex: 1;
   }
 
